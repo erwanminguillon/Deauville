@@ -1,0 +1,382 @@
+:root {
+  --paper: #fbf6ec;
+  --ink: #1d1a24;
+  --muted: #6d6676;
+  --line: #e4dccd;
+  --card: #ffffff;
+  --accent: #e2482f;
+  --accent-soft: #fde3dc;
+  --gold: #f2b632;
+  --solo: #e2482f;
+  --lineup: #3161c9;
+  --workshop: #1d8a5b;
+  --radius: 14px;
+  --shadow: 0 1px 2px rgba(29, 26, 36, 0.06), 0 4px 16px rgba(29, 26, 36, 0.06);
+  font-family:
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  line-height: 1.5;
+}
+
+a {
+  color: inherit;
+}
+
+.wrap {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* --- Header --------------------------------------------------------------- */
+
+.masthead {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 40px 0 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.masthead::after {
+  content: "";
+  position: absolute;
+  right: -60px;
+  top: -60px;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: var(--gold);
+  opacity: 0.9;
+}
+
+.masthead .wrap {
+  position: relative;
+  z-index: 1;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-size: 0.78rem;
+  color: var(--gold);
+  margin: 0 0 8px;
+}
+
+.masthead h1 {
+  font-size: clamp(2rem, 6vw, 3.6rem);
+  line-height: 1.05;
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.masthead h1 span {
+  color: var(--accent);
+}
+
+.masthead .dates {
+  margin: 12px 0 0;
+  font-size: 1.1rem;
+  opacity: 0.85;
+}
+
+.nav {
+  display: flex;
+  gap: 18px;
+  margin-top: 20px;
+  font-size: 0.95rem;
+}
+
+.nav a {
+  color: var(--paper);
+  opacity: 0.8;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+}
+
+.nav a:hover {
+  opacity: 1;
+  border-color: var(--gold);
+}
+
+/* --- Sections ------------------------------------------------------------- */
+
+section {
+  padding: 32px 0 8px;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin: 0 0 16px;
+  letter-spacing: -0.01em;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+/* --- Now on stage --------------------------------------------------------- */
+
+.now {
+  background: var(--accent-soft);
+  border: 1px solid #f6c4b8;
+  border-radius: var(--radius);
+  padding: 18px 20px;
+}
+
+.now h2 {
+  font-size: 1.1rem;
+  margin: 0 0 8px;
+}
+
+.now ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.now li {
+  padding: 4px 0;
+}
+
+.live-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-right: 8px;
+  animation: pulse 1.6s infinite;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* --- Filters -------------------------------------------------------------- */
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.tab {
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--ink);
+  padding: 8px 14px;
+  border-radius: 999px;
+  font: inherit;
+  cursor: pointer;
+}
+
+.tab[aria-pressed="true"] {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}
+
+select,
+input,
+textarea {
+  font: inherit;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--card);
+  color: var(--ink);
+}
+
+.toolbar select {
+  margin-left: auto;
+}
+
+/* --- Performance cards ---------------------------------------------------- */
+
+.cards {
+  display: grid;
+  gap: 12px;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  gap: 16px;
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 16px 18px;
+  border-left: 6px solid var(--solo);
+}
+
+.card.lineup {
+  border-left-color: var(--lineup);
+}
+
+.card.workshop {
+  border-left-color: var(--workshop);
+}
+
+.card .time {
+  font-weight: 800;
+  font-size: 1.3rem;
+  line-height: 1.1;
+}
+
+.card .time small {
+  display: block;
+  font-weight: 400;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.card h3 {
+  margin: 0 0 2px;
+  font-size: 1.15rem;
+}
+
+.card p {
+  margin: 4px 0 0;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 2px 8px;
+  border-radius: 999px;
+  color: #fff;
+  background: var(--solo);
+  margin-right: 6px;
+  vertical-align: 2px;
+}
+
+.badge.lineup {
+  background: var(--lineup);
+}
+
+.badge.workshop {
+  background: var(--workshop);
+}
+
+.badge.age {
+  background: var(--ink);
+}
+
+.artists-links a {
+  text-decoration: none;
+  border-bottom: 1px solid var(--line);
+}
+
+.artists-links a:hover {
+  border-color: var(--accent);
+}
+
+/* --- Artists -------------------------------------------------------------- */
+
+.artist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 12px;
+}
+
+.artist-tile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 12px;
+  text-decoration: none;
+}
+
+.avatar {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--ink);
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  overflow: hidden;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar.big {
+  width: 96px;
+  height: 96px;
+  font-size: 2rem;
+}
+
+.artist-head {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+/* --- Footer / messages ---------------------------------------------------- */
+
+footer {
+  padding: 40px 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.message {
+  padding: 12px 16px;
+  border-radius: 10px;
+  margin: 12px 0;
+}
+
+.message.error {
+  background: #fde8e8;
+  color: #9b1c1c;
+  border: 1px solid #f5bcbc;
+}
+
+.message.ok {
+  background: #e3f5ec;
+  color: #14583a;
+  border: 1px solid #b7e3cc;
+}
+
+@media (max-width: 560px) {
+  .card {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .toolbar select {
+    margin-left: 0;
+    width: 100%;
+  }
+}

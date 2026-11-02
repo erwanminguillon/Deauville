@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin - Deauville Festival du Rire</title>
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/admin/admin.css" />
+  </head>
+  <body>
+    <header class="masthead">
+      <div class="wrap">
+        <p class="eyebrow">Admin</p>
+        <h1>Deauville Festival <span>du Rire</span></h1>
+        <nav class="nav">
+          <a href="/">&larr; Public website</a>
+          <a href="#schedule">Schedule</a>
+          <a href="#performance-form">New performance</a>
+          <a href="#artist-form">New artist</a>
+          <a href="/docs">API</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <div id="message"></div>
+
+      <section id="schedule">
+        <h2>Schedule</h2>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Day</th>
+                <th>Time</th>
+                <th>Venue</th>
+                <th>Title</th>
+                <th>With</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="rows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2 id="form-title">New performance</h2>
+        <form id="performance-form" class="panel">
+          <div class="grid">
+            <label
+              >Kind
+              <select name="kind" id="kind">
+                <option value="solo">Solo show</option>
+                <option value="lineup">Lineup</option>
+                <option value="workshop">Workshop</option>
+              </select>
+            </label>
+            <label>Title <input name="title" required /></label>
+            <label
+              >Venue
+              <select name="venue" class="venue-select"></select
+            ></label>
+            <label
+              >Start <input name="start" type="datetime-local" required
+            /></label>
+            <label
+              >Duration (min)
+              <input name="duration_minutes" type="number" min="1" required
+            /></label>
+            <label class="wide">Description <input name="description" /></label>
+          </div>
+
+          <fieldset data-kind="solo">
+            <legend>Solo show</legend>
+            <div class="grid">
+              <label
+                >Artist
+                <select name="artist" class="artist-select"></select
+              ></label>
+              <label
+                >Minimum age
+                <input name="min_age" type="number" min="0" max="18" value="0"
+              /></label>
+            </div>
+          </fieldset>
+
+          <fieldset data-kind="lineup">
+            <legend>Lineup</legend>
+            <div class="grid">
+              <label
+                >Host
+                <select name="host" class="artist-select"></select
+              ></label>
+            </div>
+            <p class="muted">Acts, in running order (tick at least two):</p>
+            <div id="acts" class="checks"></div>
+          </fieldset>
+
+          <fieldset data-kind="workshop">
+            <legend>Workshop</legend>
+            <div class="grid">
+              <label
+                >Teacher
+                <select name="teacher" class="artist-select"></select
+              ></label>
+              <label
+                >Places
+                <input name="max_participants" type="number" min="1" value="12"
+              /></label>
+            </div>
+          </fieldset>
+
+          <div class="actions">
+            <button type="submit" class="primary" id="submit">Schedule</button>
+            <button type="button" id="cancel-edit" hidden>Cancel edit</button>
+          </div>
+        </form>
+      </section>
+
+      <section>
+        <h2>New artist</h2>
+        <form id="artist-form" class="panel">
+          <div class="grid">
+            <label>Name <input name="name" required /></label>
+            <label>Photo URL <input name="photo_url" /></label>
+            <label class="wide">Bio <input name="bio" /></label>
+          </div>
+          <div class="actions">
+            <button type="submit" class="primary">Add artist</button>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <footer class="wrap">
+      Every rule is checked by the server: conflicts come back as error
+      messages.
+    </footer>
+
+    <script src="/admin/admin.js"></script>
+  </body>
+</html>

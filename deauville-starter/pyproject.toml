@@ -1,0 +1,30 @@
+[project]
+name = "deauville-starter"
+version = "0.1.0"
+description = "Programme and scheduling API for the Deauville Festival du Rire"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.34",
+]
+
+[dependency-groups]
+dev = [
+    "httpx>=0.28",
+    "pytest>=8.3",
+    "ruff>=0.11",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["festival"]
+
+[tool.ruff]
+line-length = 100
